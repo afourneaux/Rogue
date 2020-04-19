@@ -1,11 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class RoomController : MonoBehaviour
 {
+    // TODO: Quit game, return to menu
+    // TODO: back button, tracking variables via stack
+    // TODO: Additive variables
+    // TODO: Achievements
     public GameObject RoomTextPrefab;
     public GameObject RoomOptionsButtonPrefab;
     public GameObject RoomOptionsInputPrefab;
@@ -15,7 +18,7 @@ public class RoomController : MonoBehaviour
     Room activeRoom;
     Dictionary<int, Room> story;
     GameObject roomTextObject;
-    Dictionary<string, string> variables;
+    Stack<int> roomHistory;
     Dictionary<string, string> defaultVariables;
     Dictionary<string, string> checkpointVariables;
     int checkpointRoom;
@@ -39,7 +42,7 @@ public class RoomController : MonoBehaviour
             Story storyJSON = JsonUtility.FromJson<Story>(textAsset.text);
             if (storyJSON != null && storyJSON.title != null && storyJSON.title != "") {
                 // Display each story based on its title
-                Button newLoadable = Instantiate(LoadGamePrefab, new Vector3(0,0,0), Quaternion.identity);
+                Button newLoadable = Instantiate(LoadGamePrefab, Vector3.zero, Quaternion.identity);
                 newLoadable.transform.SetParent(ButtonList.transform);
                 Text loadText = newLoadable.GetComponentInChildren<Text>();
                 loadText.text = storyJSON.title;
@@ -48,7 +51,7 @@ public class RoomController : MonoBehaviour
                     StartGame(storyJSON);
                 });
             }
-            // If the story parse failed, display filename with an X
+            // TODO: If the story parse failed, display filename with an X
         }
     }
 
@@ -74,7 +77,7 @@ public class RoomController : MonoBehaviour
         }
 
         // Generate the room block text
-        roomTextObject = Instantiate(RoomTextPrefab, new Vector3(0f, 0f, 0f), Quaternion.identity);
+        roomTextObject = Instantiate(RoomTextPrefab, Vector3.zero, Quaternion.identity);
         roomTextObject.transform.SetParent(RoomOptionsPanel.transform, false);
         Text roomText = roomTextObject.GetComponentInChildren<Text>();
         roomText.text = room.DisplayText(variables);
@@ -88,12 +91,18 @@ public class RoomController : MonoBehaviour
         // Generate each button
         foreach (Option option in room.options)
         {
+            // Test whether to display the condition based on a check
+            if (option.hasCheck) {
+                if (!option.check.Test(variables)) {
+                    continue;
+                }
+            }
             // Input switches: Handle the display of different input types
             switch (option.type)
             {
                 case "text":
                     // Create and place input and button
-                    optionObject = Instantiate(RoomOptionsInputPrefab, new Vector3(0f, 0f, 0f), Quaternion.identity);
+                    optionObject = Instantiate(RoomOptionsInputPrefab, Vector3.zero, Quaternion.identity);
                     optionObject.transform.SetParent(RoomOptionsPanel.transform, false);
                     // Set text
                     submitButton = optionObject.GetComponentInChildren<Button>();
@@ -115,7 +124,7 @@ public class RoomController : MonoBehaviour
                     break;
                 case "challenge":
                     // Create and place input and button
-                    optionObject = Instantiate(RoomOptionsInputPrefab, new Vector3(0f, 0f, 0f), Quaternion.identity);
+                    optionObject = Instantiate(RoomOptionsInputPrefab, Vector3.zero, Quaternion.identity);
                     optionObject.transform.SetParent(RoomOptionsPanel.transform, false);
                     optionObject.transform.localScale = new Vector3(1f, 1f, 1f);
                     // Set text
@@ -141,7 +150,7 @@ public class RoomController : MonoBehaviour
                     break;
                 default:
                     // Create and place button
-                    optionObject = Instantiate(RoomOptionsButtonPrefab, new Vector3(0f, 0f, 0f), Quaternion.identity);
+                    optionObject = Instantiate(RoomOptionsButtonPrefab, Vector3.zero, Quaternion.identity);
                     optionObject.transform.SetParent(RoomOptionsPanel.transform, false);
                     optionObject.transform.localScale = new Vector3(1f, 1f, 1f);
                     // Set text
@@ -162,7 +171,6 @@ public class RoomController : MonoBehaviour
                                 variables = new Dictionary<string, string>(defaultVariables);
                                 checkpointVariables = new Dictionary<string, string>(defaultVariables);
                                 checkpointRoom = 1;
-                                checkpointVariables = null;
                                 SelectRoom(option.roomID);
                                 break;
                             case "reload":
@@ -213,13 +221,14 @@ public class RoomController : MonoBehaviour
     {
         story = new Dictionary<int, Room>();
         if (rawStory.defaultVariables != null) {
-        foreach (Variable var in rawStory.defaultVariables)
-        {
-            variables[var.key] = var.value;
-            defaultVariables[var.key] = var.value;
-            checkpointVariables[var.key] = var.value;
+            foreach (Variable var in rawStory.defaultVariables)
+            {
+                variables[var.key] = var.value;
+                defaultVariables[var.key] = var.value;
+                checkpointVariables[var.key] = var.value;
+            }
         }
-        }
+        checkpointRoom = 1;
         foreach (Room room in rawStory.story)
         {
             story.Add(room.roomID, room);

@@ -8,6 +8,8 @@ public class Option {
     public string key; // For text, numbers, and challenges, this is where the response is saved
     public string value; // For buttons and smalls, set this value to the variable at key
     public Answer[] answers; // For challenges, this is the list of answers tied to their target room. If none are found, go to the default roomID
+    public bool hasCheck = false;
+    public Check check; // Condition which must be true in order to display the option
 
     public string DisplayText(Dictionary<string, string> variables) {
         string displayString = text;

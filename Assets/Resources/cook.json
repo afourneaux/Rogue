@@ -1,0 +1,223 @@
+{
+    "title": "Chaos in the Kitchen",
+    "defaultVariables": [
+    ],
+    "story": [
+        {
+            "roomID": 0,
+            "text": "GAME OVER",
+            "options": [
+                {
+                    "roomID": 1,
+                    "text": "Try again?",
+                    "type": "restart"
+                },
+                {
+                    "roomID": 1,
+                    "text": "Reload from checkpoint?",
+                    "type": "reload"
+                }
+            ]
+        },
+        {
+            "roomID": 1,
+            "text": "The kitchen... The kitchen! That's where food is made.\n\nYou burst into the white-tiled room, servos whirring with artificial adrenaline. The Family would be home soon, and their food had not yet been prepared. You're not sure where KitchenBot John was, but you, ButlerBot Curry, would have to step in.\n\nThe trouble was, you've never been in here before. You have no idea what these white, black, and silver objects are, or where the food could possibly be. Still, you're a ButlerBot, for Turing's sake! You can surely figure this one out! Where to start...?",
+            "options": [
+                {
+                    "roomID": 2,
+                    "text": "There is a sliding door at the back of the room. Pass through to see what's on the other side!"
+                },
+                {
+                    "roomID": 3,
+                    "text": "A giant white box towers to your left. Pull the bar to see what happens."
+                }
+            ]
+        },
+        {
+            "roomID": 2,
+            "text": "You throw open the sliding door and enter. Strange, there is a great deal of wind here. The air rushes past you, quickly, and your bewhildered AI core takes some time before realising that you are falling.\n\nCurses... Was that a window?",
+            "options": [
+                {
+                    "roomID": 0,
+                    "text": "It's quite far to the ground..."
+                }
+            ]
+        },
+        {
+            "roomID": 3,
+            "text": "Success! The bar appears to be some sort of handle, which opens the front face of the white box.\n\nWithin, strange objects are stored in artificially cold air.",
+            "options": [
+                {
+                    "roomID": 4,
+                    "text": "Take a tall blue box made of hard paper. This must surely be food!"
+                }
+            ]
+        },
+        {
+            "roomID": 4,
+            "text": "The probability of this box being food is high, but you have never seen The Family eat something like this directly. Surely, this box requires processing to become food.\n\nThis must be cooking!\n\nYour haptic sensors detect a dense fluid inside of the box. However, there appears to be no recepticles through which to access the fluid.",
+            "options": [
+                {
+                    "roomID": 5,
+                    "text": "Break the box."
+                },
+                {
+                    "roomID": 6,
+                    "text": "Pierce a hole in the box."
+                },
+                {
+                    "roomID": 7,
+                    "text": "Strike the floor with the box."
+                }
+            ]
+        },
+        {
+            "roomID": 5,
+            "text": "You lift the container, and rip it easily in half. Its contents, a cold white liquid, splashes wildly in all directions, including all over yourself. Suddenly soaked with this liquid, you feel your electronics begin to sizzle and zap, before entering a full-blown short circuit. Your innards are completely burnt, rendered useless.",
+            "options": [
+                {
+                    "roomID": 0,
+                    "text": "Dream of electric sheep"
+                }
+            ]
+        },
+        {
+            "roomID": 6,
+            "checkpoint": true,
+            "text": "Success! White liquid begins pouring from the box, splashing to the ground. You set down the box, contented with securing your first component of the food. Now, what next?",
+            "options": [
+                {
+                    "roomID": 8,
+                    "text": "Many wooden cubes are affixed to the wall. Pull the front faces off of them until you find something interesting!"
+                }
+            ]
+        },
+        {
+            "roomID": 7,
+            "text": "You throw the container onto the ground. Surprisingly, it explodes open, launching white liquid splashing all over the floor! Oh, the mess! You move for a mop, but the wet floor causes you to slip, and fall. The impact shatters your power supply, and the void overtakes you.",
+            "options": [
+                {
+                    "roomID": 0,
+                    "text": "This is why \"Wet Floor\" signs are an industry standard!"
+                }
+            ]
+        },
+        {
+            "roomID": 8,
+            "text": "The wood detaches from the cubes with ease, thanks to a latching mechanism on their front faces. You take a moment to appreciate the fine craftsmanship, and observe the contents.",
+            "options": [
+                {
+                    "roomID": 9,
+                    "text": "Several metal panels, with strange dents and shapes, are stacked here. One at the bottom looks like it could be used to contain the white liquid. Take it!"
+                },
+                {
+                    "roomID": 10,
+                    "text": "There are more boxes made of this hard paper substance. Could this be another food component? Inspect it!"
+                }
+            ]
+        },
+        {
+            "roomID": 9,
+            "text": "You reach for the bottom-most metal panel, and tug. Suddenly, the entire unstable pile loses its stability, and they all come crashing noisily down! There is no time to process and react as heavy cooking objects smash down onto you. Your CPU is swiftly smashed to shards, leaving the rest of you a worthless metal husk.",
+            "options": [
+                {
+                    "roomID": 0,
+                    "text": "Curse my fragile, sleek design!"
+                }
+            ]
+        },
+        {
+            "roomID": 10,
+            "text": "You reach and grab a box from this wooden container. Several small objects inside rattle noisily as you move the it.",
+            "options": [
+                {
+                    "roomID": 8,
+                    "text": "This box is far too light to be nourishing. Search the wooden boxes again!"
+                },
+                {
+                    "roomID": 11,
+                    "text": "Pull the top off of the box."
+                },
+                {
+                    "roomID": 12,
+                    "text": "Pierce the box."
+                }
+            ]
+        },
+        {
+            "roomID": 11,
+            "text": "You rip the hard paper easily, sending a mass of small, brittle objects flying through the air. You use the box to try to deflect the oncoming projectiles, but only tip more out.\n\nSeveral projectiles find their way past your outer plating, and work deep into your circuits. Gears grind against food, clogging and blocking your servos. Your limbs grind to a halt and your memory processor fails. You fall to the floor, a mechanical heap.",
+            "options": [
+                {
+                    "roomID": 0,
+                    "text": "Maybe The Family can save you?"
+                }
+            ]
+        },
+        {
+            "roomID": 12,
+            "text": "You peer into the box, and find it is filled with small, hard objects. You're getting used to this now, you've found more food for sure.\n\nYou return to the blue box with the white liquid. It is time to combine the two components in what you have often heard referred to as a \"recipe\".",
+            "options": [
+                {
+                    "roomID": 13,
+                    "text": "Pick up both boxes and combine them. Violently."
+                },
+                {
+                    "roomID": 14,
+                    "text": "Empty the food contents into an appliance, and interface."
+                }
+            ]
+        },
+        {
+            "roomID": 13,
+            "text": "SMASH\nSMASH\nSMASH\n\nFood components fly all about the room like sparks in a machine shop. The satisfying crumple of hard paper as it softens under the white liquid.\n\nYou now hold a mixture of two food components, which must mean you have created food! Your circuits whirr with simulated excitement.",
+            "options": [
+                {
+                    "roomID": 15,
+                    "text": "According to your scheduler, The Family should be home very soon. Prepare to produce this delicacy!"
+                }
+            ]
+        },
+        {
+            "roomID": 14,
+            "text": "You empty the contents of both boxes into one of the small appliances lying about the kitchen. Electronics, now this is something you understand! You find an interfacing port with the appliance, and connect your own circuitry...\n\nBefore the white liquid causes the appliance to spark violently, and a surge of electricity to jolt through your systems. Your CPU snaps off, and your chassis falls limply to the ground.",
+            "options": [
+                {
+                    "roomID": 0,
+                    "text": "If only you had invested in a surge protector!"
+                }
+            ]
+        },
+        {
+            "roomID": 15,
+            "text": "The dining room is perfectly arranged.\nEvery surface in the house is freshly washed and dusted.\nSoft music of The Family's taste plays gently.\nYou are ready.\n\nFinally, front door opens, and The Family are home. Immediately, you see the rewarding looks of wide eyes and furrowed brows. One frowns approvingly, another stands, mouth agape, in silent awe. \"The kitchen is a mess!\" one shouted with delight. \"What happened to ButtBot?!\" another cried, adoringly using their nickname for you.",
+            "options": [
+                {
+                    "roomID": 16,
+                    "text": "Present the meal"
+                }
+            ]
+        },
+        {
+            "roomID": 16,
+            "text": "You place your creation on the dining room table.\n\n\"What... is that soggy cereal and cardboard?\"\n\"Did it try to make food?\"\n\"Is this because I disabled KitchenBot before going to the restaurant?\"\n\"This is ridiculous. I'm unplugging him now and returning him first thing in the morning.\"\n\nOne member of The Family approaches you, clearly to thank you. You reach out to embrace them, and...",
+            "options": [
+                {
+                    "roomID": 17,
+                    "text": "<POWER DOWN>"
+                }
+            ]
+        },
+        {
+            "roomID": 17,
+            "text": "You... Win? Congratulations either way!\n\nYou have completed \"Chaos in the Kitchen\" by Alex Fourneaux, presented by Spiral Staircase Productions",
+            "options": [
+                {
+                    "roomID": 1,
+                    "text": "Play again!",
+                    "type": "restart"
+                }
+            ]
+        }
+    ]
+}

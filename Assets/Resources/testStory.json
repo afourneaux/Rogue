@@ -4,6 +4,10 @@
         {
             "key": "name",
             "value": "Sean"
+        },
+        {
+            "key": "testNumber",
+            "value": "3"
         }
     ],
     "story": [
@@ -25,7 +29,7 @@
         },
         {
             "roomID": 1,
-            "text": "This is room 1. Welcome to room 1!",
+            "text": "This is room 1. Welcome to room 1!\n\nThe room shows you its <b>rich text capabilities</b>",
             "options": [
                 {
                     "roomID": 2,
@@ -58,6 +62,10 @@
                 },
                 {
                     "roomID": 3,
+                    "text": "\"What? That's not my name at all.\""
+                },
+                {
+                    "roomID": 3,
                     "text": "\"Actually, my name is...\"",
                     "type": "text",
                     "key": "name"
@@ -71,6 +79,39 @@
                 {
                     "roomID": 2,
                     "text": "Righto then"
+                },
+                {
+                    "roomID": 2,
+                    "text": "3 > 3",
+                    "hasCheck": true,
+                    "check": {
+                        "key": "testNumber",
+                        "target": 3,
+                        "comparison": ">",
+                        "type": "number"
+                    }
+                },
+                {
+                    "roomID": 2,
+                    "text": "3 >= 3",
+                    "hasCheck": true,
+                    "check": {
+                        "key": "testNumber",
+                        "target": 3,
+                        "comparison": ">=",
+                        "type": "number"
+                    }
+                },
+                {
+                    "roomID": 2,
+                    "text": "3 > 2",
+                    "hasCheck": true,
+                    "check": {
+                        "key": "testNumber",
+                        "target": 2,
+                        "comparison": ">",
+                        "type": "number"
+                    }
                 }
             ]
         },
@@ -96,6 +137,10 @@
                 {
                     "roomID": 9,
                     "text": "I shoot the gnome with a gun"
+                },
+                {
+                    "roomID": 11,
+                    "text": "I offer the gnome the flower."
                 }
             ]
         },
@@ -156,6 +201,64 @@
                 {
                     "roomID": 0,
                     "text": "Hm."
+                }
+            ]
+        },
+        {
+            "roomID": 11,
+            "text": "Did you sniff the flower?",
+            "options": [
+                {
+                    "roomID": 12,
+                    "text": "Totally, yeah",
+                    "hasCheck": true,
+                    "check": {
+                        "key": "substance",
+                        "target": "flower",
+                        "comparison": "=",
+                        "type": "string"
+                    }
+                },
+                {
+                    "roomID": 13,
+                    "text": "Totally, uh... yeah",
+                    "hasCheck": true,
+                    "check": {
+                        "key": "substance",
+                        "target": "flower",
+                        "comparison": "!=",
+                        "type": "string"
+                    }
+                }
+            ]
+        },
+        {
+            "roomID": 12,
+            "text": "That's kinda weird though.",
+            "options": [
+                {
+                    "roomID": 14,
+                    "text": "You... said that already"
+                }
+            ]
+        },
+        {
+            "roomID": 13,
+            "text": "You're a coddang liar.",
+            "options": [
+                {
+                    "roomID": 14,
+                    "text": "Okay fine I didn't sniff your stupid flower."
+                }
+            ]
+        },
+        {
+            "roomID": 14,
+            "text": "The gnome is offended and shoots you. With a gun.",
+            "options": [
+                {
+                    "roomID": 0,
+                    "text": "Guess I'll die."
                 }
             ]
         }
