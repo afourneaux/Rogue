@@ -11,11 +11,6 @@
                     "roomID": 1,
                     "text": "Try again?",
                     "type": "restart"
-                },
-                {
-                    "roomID": 1,
-                    "text": "Reload from checkpoint?",
-                    "type": "reload"
                 }
             ]
         },
@@ -84,7 +79,7 @@
         {
             "roomID": 6,
             "checkpoint": true,
-            "text": "Success! White liquid begins pouring from the box, splashing to the ground. You set down the box, contented with securing your first component of the food. Now, what next?",
+            "text": "Success! White liquid begins pouring from the box, splashing to the ground. You set down the container, contented with securing your first component of the food. Now, what next?",
             "options": [
                 {
                     "roomID": 8,
@@ -104,7 +99,7 @@
         },
         {
             "roomID": 8,
-            "text": "The wood detaches from the cubes with ease, thanks to a latching mechanism on their front faces. You take a moment to appreciate the fine craftsmanship, and observe the contents.",
+            "text": "The wood detaches from the cubes with ease, thanks to a hinge mechanism on their front faces. You take a moment to appreciate the fine craftsmanship, and observe the contents.",
             "options": [
                 {
                     "roomID": 9,
@@ -118,7 +113,7 @@
         },
         {
             "roomID": 9,
-            "text": "You reach for the bottom-most metal panel, and tug. Suddenly, the entire unstable pile loses its stability, and they all come crashing noisily down! There is no time to process and react as heavy cooking objects smash down onto you. Your CPU is swiftly smashed to shards, leaving the rest of you a worthless metal husk.",
+            "text": "You reach for the bottom-most metal panel, and tug. Suddenly, the entire unstable pile loses its stability, and they all come crashing noisily down! There is no time to process and react as heavy cooking objects fall onto you. Your CPU is swiftly smashed to shards, leaving the rest of you a worthless metal husk.",
             "options": [
                 {
                     "roomID": 0,
@@ -128,7 +123,7 @@
         },
         {
             "roomID": 10,
-            "text": "You reach and grab a box from this wooden container. Several small objects inside rattle noisily as you move the it.",
+            "text": "You reach and grab a box from this wooden container. Several small objects inside rattle noisily as you move it.",
             "options": [
                 {
                     "roomID": 8,
@@ -170,7 +165,7 @@
         },
         {
             "roomID": 13,
-            "text": "SMASH\nSMASH\nSMASH\n\nFood components fly all about the room like sparks in a machine shop. The satisfying crumple of hard paper as it softens under the white liquid.\n\nYou now hold a mixture of two food components, which must mean you have created food! Your circuits whirr with simulated excitement.",
+            "text": "SMASH\nSMASH\nSMASH\n\nFood components fly all about the room like sparks in a machine shop. The satisfying crumple of hard paper as it softens under the white liquid.\n\nYou now hold a mixture of two food components, which must mean you have created food! Your circuits whir with simulated excitement.",
             "options": [
                 {
                     "roomID": 15,
@@ -180,7 +175,7 @@
         },
         {
             "roomID": 14,
-            "text": "You empty the contents of both boxes into one of the small appliances lying about the kitchen. Electronics, now this is something you understand! You find an interfacing port with the appliance, and connect your own circuitry...\n\nBefore the white liquid causes the appliance to spark violently, and a surge of electricity to jolt through your systems. Your CPU snaps off, and your chassis falls limply to the ground.",
+            "text": "You empty the contents of both boxes into one of the small appliances lying about the kitchen. Electronics, now this is something you understand! You find an interfacing port with the appliance, and connect your own circuitry...\n\nContact with the white liquid causes the appliance to spark violently, and a surge of electricity to jolt through your systems. Your CPU snaps off, and your chassis falls limply to the ground.",
             "options": [
                 {
                     "roomID": 0,

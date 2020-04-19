@@ -17,19 +17,14 @@
             "options": [
                 {
                     "roomID": 1,
-                    "text": "Try again?",
+                    "text": "Restart game?",
                     "type": "restart"
-                },
-                {
-                    "roomID": 1,
-                    "text": "Reload from checkpoint?",
-                    "type": "reload"
                 }
             ]
         },
         {
             "roomID": 1,
-            "text": "This is room 1. Welcome to room 1!\n\nThe room shows you its <b>rich text capabilities</b>",
+            "text": "This is room 1. Welcome to room 1!\n\nThe room shows you its <b>rich <color=\"red\">text</color> capabilities</b>",
             "options": [
                 {
                     "roomID": 2,
@@ -50,7 +45,6 @@
                 {
                     "roomID": 4,
                     "text": "Sniff the flower",
-                    "type": "checkpoint",
                     "key": "substance",
                     "value": "flower"
                 },

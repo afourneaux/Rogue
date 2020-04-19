@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class RoomController : MonoBehaviour
 {
-    // TODO: Quit game, return to menu
-    // TODO: back button, tracking variables via stack
     // TODO: Additive variables
     // TODO: Achievements
     public GameObject RoomTextPrefab;
@@ -15,24 +14,31 @@ public class RoomController : MonoBehaviour
     public Button LoadGamePrefab;
     public GameObject RoomOptionsPanel;
     public GameObject ButtonList;
+    public Button BackButton;
+    public Button MenuButton;
     Room activeRoom;
     Dictionary<int, Room> story;
     GameObject roomTextObject;
     Stack<int> roomHistory;
+    Stack<Dictionary<string,string>> variableHistory;
+    Dictionary<string, string> variables;
     Dictionary<string, string> defaultVariables;
-    Dictionary<string, string> checkpointVariables;
-    int checkpointRoom;
 
     public RoomController()
     {
         variables = new Dictionary<string, string>();
         defaultVariables = new Dictionary<string, string>();
-        checkpointVariables = new Dictionary<string, string>();
+        roomHistory = new Stack<int>();
+        variableHistory = new Stack<Dictionary<string, string>>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        // Hook up the Back and Menu buttons
+        BackButton.onClick.AddListener(Back);
+        MenuButton.onClick.AddListener(Menu);
+
         // Find all json files in Stories
         string[] files = Directory.GetFiles("Assets/Resources", "*.json");
         foreach(string file in files) {
@@ -57,6 +63,7 @@ public class RoomController : MonoBehaviour
 
     public void StartGame(Story rawStory) 
     {
+        MenuButton.gameObject.SetActive(true);
         GenerateStory(rawStory);
         Room startingRoom = story[1];
 
@@ -68,12 +75,11 @@ public class RoomController : MonoBehaviour
 
     public void GenerateRoom(Room room)
     {
-        // If this is a checkpoint, save progress
-        if (room.checkpoint)
-        {
-            // TODO: Toast "Checkpoint saved!"
-            checkpointRoom = room.roomID;
-            checkpointVariables = new Dictionary<string, string>(variables);
+        // Display the back button (or not)
+        if (roomHistory.Count > 0) {
+            BackButton.gameObject.SetActive(true);
+        } else {
+            BackButton.gameObject.SetActive(false);
         }
 
         // Generate the room block text
@@ -112,6 +118,7 @@ public class RoomController : MonoBehaviour
                     // Set button listener
                     submitButton.onClick.AddListener(() =>
                     {
+                        SaveToHistory(activeRoom, option);
                         input.text = input.text.Trim();
                         if (input.text == "")
                         {
@@ -135,6 +142,7 @@ public class RoomController : MonoBehaviour
                     // Set button listener
                     submitButton.onClick.AddListener(() =>
                     {
+                        SaveToHistory(activeRoom, option);
                         input.text = input.text.Trim();
                         if (input.text == "")
                         {
@@ -160,33 +168,17 @@ public class RoomController : MonoBehaviour
                     button = optionObject.GetComponent<Button>();
                     button.onClick.AddListener(() =>
                     {
+                        SaveToHistory(activeRoom, option);
                         if (option.key != null && option.key != "" && 
                             option.value != null && option.value != "") {
                             variables[option.key] = option.value;
                         }
-                        // Progression switches: Handle save, load, and restart
-                        switch (option.type)
-                        {
-                            case "restart":
-                                variables = new Dictionary<string, string>(defaultVariables);
-                                checkpointVariables = new Dictionary<string, string>(defaultVariables);
-                                checkpointRoom = 1;
-                                SelectRoom(option.roomID);
-                                break;
-                            case "reload":
-                                Debug.Log("reloading room " + checkpointRoom);
-                                variables = new Dictionary<string, string>(checkpointVariables);
-                                SelectRoom(checkpointRoom);
-                                break;
-                            case "checkpoint":
-                                checkpointVariables = new Dictionary<string, string>(variables);
-                                checkpointRoom = option.roomID;
-                                SelectRoom(option.roomID);
-                                break;
-                            default:
-                                SelectRoom(option.roomID);
-                                break;
+                        if (option.type == "restart") {
+                            variables = new Dictionary<string, string>(defaultVariables);
+                            roomHistory = new Stack<int>();
+                            variableHistory = new Stack<Dictionary<string, string>>();
                         }
+                        SelectRoom(option.roomID);
                     });
                     break;
             }
@@ -213,7 +205,7 @@ public class RoomController : MonoBehaviour
         }
         else
         {
-            Debug.Log("Room " + roomID + " does not exist!");
+            Debug.LogError("Room " + roomID + " does not exist!");
         }
     }
 
@@ -225,13 +217,45 @@ public class RoomController : MonoBehaviour
             {
                 variables[var.key] = var.value;
                 defaultVariables[var.key] = var.value;
-                checkpointVariables[var.key] = var.value;
             }
         }
-        checkpointRoom = 1;
         foreach (Room room in rawStory.story)
         {
             story.Add(room.roomID, room);
         }
+    }
+
+    public void SaveToHistory(Room room, Option option) {
+        roomHistory.Push(room.roomID);
+        Dictionary<string, string> variableChanges = new Dictionary<string, string>();
+        // TODO: Eventually, we may implement changing multiple variables in an option
+        if (option.key != null) {
+            if (variables.TryGetValue(option.key, out string value)) {
+                variableChanges[option.key] = value;
+            } else {
+                variableChanges[option.key] = null;
+            }
+        }
+        variableHistory.Push(variableChanges);
+    }
+
+    public void Back() {
+        if (variableHistory.Count <= 0) {
+            return;
+        }
+        Dictionary<string,string> updateVariables = variableHistory.Pop();
+        int updateRoomID = roomHistory.Pop();
+        foreach (KeyValuePair<string,string> variable in updateVariables) {
+            if (variable.Value == null) {
+                variables.Remove(variable.Key);
+            } else {
+                variables[variable.Key] = variable.Value;
+            }
+        }
+        SelectRoom(updateRoomID);
+    }
+
+    public void Menu() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
