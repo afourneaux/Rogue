@@ -1,0 +1,163 @@
+{
+    "title": "Trial of the Gnome",
+    "defaultVariables": [
+        {
+            "key": "name",
+            "value": "Sean"
+        }
+    ],
+    "story": [
+        {
+            "roomID": 0,
+            "text": "GAME OVER",
+            "options": [
+                {
+                    "roomID": 1,
+                    "text": "Try again?",
+                    "type": "restart"
+                },
+                {
+                    "roomID": 1,
+                    "text": "Reload from checkpoint?",
+                    "type": "reload"
+                }
+            ]
+        },
+        {
+            "roomID": 1,
+            "text": "This is room 1. Welcome to room 1!",
+            "options": [
+                {
+                    "roomID": 2,
+                    "text": "Go to room 2"
+                },
+                {
+                    "roomID": 3,
+                    "text": "\"Good day! My name is...\"",
+                    "type": "text",
+                    "key": "name"
+                }
+            ]
+        },
+        {
+            "roomID": 2,
+            "text": "This is room 2. It smells of flowers and flour. Oh, and your name is {name}.",
+            "options": [
+                {
+                    "roomID": 4,
+                    "text": "Sniff the flower",
+                    "type": "checkpoint",
+                    "key": "substance",
+                    "value": "flower"
+                },
+                {
+                    "roomID": 4,
+                    "text": "Sniff the flour",
+                    "key": "substance",
+                    "value": "flour"
+                },
+                {
+                    "roomID": 3,
+                    "text": "\"Actually, my name is...\"",
+                    "type": "text",
+                    "key": "name"
+                }
+            ]
+        },
+        {
+            "roomID": 3,
+            "text": "Nobody asked, but... okay.",
+            "options": [
+                {
+                    "roomID": 2,
+                    "text": "Righto then"
+                }
+            ]
+        },
+        {
+            "roomID": 4,
+            "text": "Okay, weird. You sniff the {substance}, sure.\n\nA gnome leaps from the corner of the room and shouts, \"WHAT IS YOUR NAME?!\"",
+            "options": [
+                {
+                    "roomID": 5,
+                    "text": "My name is...",
+                    "type": "challenge",
+                    "answers": [
+                        {
+                            "answer": "Sean",
+                            "roomID": 6
+                        },
+                        {
+                            "variableAnswer": "name",
+                            "roomID": 7
+                        }
+                    ]
+                },
+                {
+                    "roomID": 9,
+                    "text": "I shoot the gnome with a gun"
+                }
+            ]
+        },
+        {
+            "roomID": 5,
+            "text": "That's not actually correct. What are you trying to pull here?",
+            "options": [
+                {
+                    "roomID": 4,
+                    "text": "Wait, NO! I made a MISTAKE!"
+                }
+            ]
+        },
+        {
+            "roomID": 6,
+            "text": "Wait, so I got it right? Dang, go me.",
+            "options": [
+                {
+                    "roomID": 8,
+                    "text": "Sean's a cool name yo"
+                }
+            ]
+        },
+        {
+            "roomID": 7,
+            "text": "I guess that's a cool name. Go you?",
+            "options": [
+                {
+                    "roomID": 8,
+                    "text": "Screw you bud"
+                }
+            ]
+        },
+        {
+            "roomID": 8,
+            "text": "Looks like you win the game!\n\nGo you. You're the best. It's your birthday. Whooooo.",
+            "options": [
+                {
+                    "roomID": 0,
+                    "text": "This is getting one star on Yelp."
+                }
+            ]
+        },
+        {
+            "roomID": 9,
+            "text": "The gnome dies.",
+            "options": [
+                {
+                    "roomID": 10,
+                    "text": "Oh."
+                }
+            ]
+        },
+        {
+            "roomID": 10,
+            "text": "Yup.",
+            "options": [
+                {
+                    "roomID": 0,
+                    "text": "Hm."
+                }
+            ]
+        }
+    ]
+}
