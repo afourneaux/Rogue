@@ -441,7 +441,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &246378313
 RectTransform:
   m_ObjectHideFlags: 0
@@ -897,7 +897,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1178457572
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1611,6 +1611,7 @@ MonoBehaviour:
   RoomOptionsPanel: {fileID: 1410604249}
   ButtonList: {fileID: 1219091026}
   BackButton: {fileID: 246378314}
+  MenuButton: {fileID: 1178457573}
 --- !u!4 &2050415695
 Transform:
   m_ObjectHideFlags: 0
