@@ -7,7 +7,15 @@ using UnityEngine.UI;
 public class RoomController : MonoBehaviour
 {
     // TODO: Additive variables
+    // TODO: Enums
+    // TODO: Make the main title "ROGUE" look more grand
+    // TODO: Experiment with fonts
+    // TODO: Active story's title along the top of the screen, inline with "Back" and "Main Menu" buttons
+    // TODO: Dev mode: Log output to screen, track variables, view full current room details
+    // TODO: More buttons on main menu. Quit to Desktop for example
+    // TODO: Document how to use JSON interface
     // TODO: Achievements
+    // TODO: Minigames
     public GameObject RoomTextPrefab;
     public GameObject RoomOptionsButtonPrefab;
     public GameObject RoomOptionsInputPrefab;
