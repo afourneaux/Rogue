@@ -14,6 +14,7 @@ public class RoomController : MonoBehaviour
     // TODO: Dev mode: Log output to screen, track variables, view full current room details
     // TODO: More buttons on main menu. Quit to Desktop for example
     // TODO: Document how to use JSON interface
+	// TODO: Story builder UI
     // TODO: Achievements
     // TODO: Minigames
     public GameObject RoomTextPrefab;
